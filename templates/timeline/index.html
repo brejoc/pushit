@@ -1,0 +1,48 @@
+{% extends "bulma/base.html" %}
+
+{% load static %}
+
+{% block title %}PushIt Timeline{% endblock %}
+
+{% block extra_css %}
+  <link type="text/css" rel="stylesheet" href="{% static "css/timeline.css" %}"  media="screen,projection"/>
+  <link type="text/css" rel="stylesheet" href="{% static "css/fab.css" %}"  media="screen,projection"/>
+{% endblock %}
+
+{% block header %}
+  {% include 'timeline/_navigation.html' %}
+{% endblock %}
+
+{% block content %}
+  <div class=".container">
+    <div class="row">
+      <div class="col s12">
+      <ul class="timeline">
+      {% for event in events %}
+        <li>
+          {% if user == event.user %}
+          <div class="direction-r">
+          {% else %}
+          <div class="direction-l">
+          {% endif %}
+            <div class="flag-wrapper">
+              <span class="hexa"></span>
+              <span class="flag">{{ event.activity }}</span>
+              <span class="time-wrapper"><span class="time">{{ event.real_date }}</span></span>
+            </div>
+            <div class="desc">{{ event.duration }} {{ event.name }} von {{ event.user }}.
+              {% if event.description %}<br /><br />{{ event.description }}{% endif %}
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+      </ul>
+      </div>
+    </div>
+  </div><!-- container -->
+
+  {% include 'timeline/_floating_action_button.html' %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "bulma/base.html" %}
+
+{% load static %}
+{% load bulma_tags %}
+
+{% block title %}PushIt Login{% endblock %}
+
+{% block header %}
+  {% include 'timeline/_navigation.html' %}
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Login</button>
+  </form>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

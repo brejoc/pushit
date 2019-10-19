@@ -1,0 +1,30 @@
+{% extends "bulma/base.html" %}
+
+{% load static %}
+
+{% block title %}PushIt Timeline{% endblock %}
+
+{% block extra_css %}
+  <link type="text/css" rel="stylesheet" href="{% static "css/fab.css" %}"  media="screen,projection"/>
+{% endblock %}
+
+{% block header %}
+  {% include 'timeline/_navigation.html' %}
+{% endblock %}
+
+{% block content %}
+  <section class="section">
+    <div class="container">
+      <div class="column">
+        <div class="col s12">
+          <h1 class="title">About PushIt</h1>
+          <p class="is-size-5">{% lorem %}</p>
+        </div>
+      </div>
+    </div><!-- container -->
+  </section>
+  {% include 'timeline/_floating_action_button.html' %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

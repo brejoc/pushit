@@ -1,0 +1,29 @@
+<nav class="navbar is-danger">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="{% url 'events' %}" style="font-weight:bold;">
+        PushIt
+      </a>
+      <span class="navbar-burger burger" data-target="navMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="navMenu" class="navbar-menu">
+      <div class="navbar-end">
+        <a href="{% url 'about' %}" class="navbar-item">About</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<script type="text/javascript">
+  (function() {
+    var burger = document.querySelector('.burger');
+    var nav = document.querySelector('#'+burger.dataset.target);
+    burger.addEventListener('click', function(){
+      burger.classList.toggle('is-active');
+      nav.classList.toggle('is-active');
+    });
+  })();
+</script>
