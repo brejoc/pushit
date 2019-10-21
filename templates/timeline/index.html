@@ -1,12 +1,14 @@
 {% extends "bulma/base.html" %}
 
 {% load static %}
+{% load webpush_notifications %}
 
 {% block title %}PushIt Timeline{% endblock %}
 
 {% block extra_css %}
   <link type="text/css" rel="stylesheet" href="{% static "css/timeline.css" %}"  media="screen,projection"/>
   <link type="text/css" rel="stylesheet" href="{% static "css/fab.css" %}"  media="screen,projection"/>
+  {% webpush_header %}
 {% endblock %}
 
 {% block header %}
@@ -37,6 +39,7 @@
         </li>
       {% endfor %}
       </ul>
+      {% webpush_button %}
       </div>
     </div>
   </div><!-- container -->

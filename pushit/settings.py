@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'webpush',
     'bulma',
     'timeline',
 ]
@@ -138,3 +139,9 @@ STATICFILES_DIRS = [
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+WEBPUSH_SETTINGS = {
+    "VAPID_PUBLIC_KEY":  env('VAPID_PUBLIC_KEY'),
+    "VAPID_PRIVATE_KEY": env('VAPID_PRIVATE_KEY'),
+    "VAPID_ADMIN_EMAIL": env('VAPID_ADMIN_EMAIL')
+}
