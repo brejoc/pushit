@@ -75,6 +75,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries':{
+                'webpush_notifications_custom': 'pushit.templatetags.webpush_notifications_custom',
+            }
         },
     },
 ]

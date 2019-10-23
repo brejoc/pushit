@@ -1,3 +1,4 @@
+{% load webpush_notifications_custom %}
 <nav class="navbar is-danger">
   <div class="container">
     <div class="navbar-brand">
@@ -12,6 +13,7 @@
     </div>
     <div id="navMenu" class="navbar-menu">
       <div class="navbar-end">
+        {% webpush_button_custom %}
         <a href="{% url 'about' %}" class="navbar-item">About</a>
       </div>
     </div>
