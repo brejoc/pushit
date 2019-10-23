@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'webpush',
     'bulma',
     'timeline',
 ]
@@ -74,6 +75,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries':{
+                'webpush_notifications_custom': 'pushit.templatetags.webpush_notifications_custom',
+            }
         },
     },
 ]
@@ -138,3 +142,9 @@ STATICFILES_DIRS = [
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+WEBPUSH_SETTINGS = {
+    "VAPID_PUBLIC_KEY":  env('VAPID_PUBLIC_KEY'),
+    "VAPID_PRIVATE_KEY": env('VAPID_PRIVATE_KEY'),
+    "VAPID_ADMIN_EMAIL": env('VAPID_ADMIN_EMAIL')
+}

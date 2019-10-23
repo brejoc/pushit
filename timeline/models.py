@@ -5,7 +5,10 @@ from django.db import models
 from django.forms import ModelForm
 from django.contrib.auth.models import User
 from django.db.models.signals import pre_save
+from django.db.models.signals import post_save
 from django.dispatch import receiver
+
+from webpush import send_user_notification
 
 
 class Event(models.Model):
@@ -51,11 +54,20 @@ class EventForm(ModelForm):
         fields = ['activity', 'duration', 'date', 'description']
 
 
+@receiver(post_save, sender=Event)
+def send_web_notifications(sender, instance, *args, **kwargs):
+    """\
+    Sending notifications after adding Activities.
+    """
+    payload = {"head": "Neue Aktivität von {}".format(instance.user),
+               "body": "{} für {}".format(instance.activity, instance.duration)}
+    for user in User.objects.all():
+        if user != instance.user:
+            send_user_notification(user=user, payload=payload, ttl=1000)
+
 @receiver(pre_save, sender=Event)
-def my_callback(sender, instance, *args, **kwargs):
+def fix_duration(sender, instance, *args, **kwargs):
     """\
     With this nasty hack we convert seconds in minutes.
     """
     instance.duration = timedelta(minutes=instance.duration.seconds)
-
-

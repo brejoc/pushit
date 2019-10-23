@@ -1,0 +1,5 @@
+{% if user.is_authenticated or group %}
+  <a id="webpush-subscribe-button" class="navbar-item" {% if group %}data-group="{{ group }}"{% endif %} data-url="{{ webpush_save_url }}">
+    Subscribe to Push Messaging
+  </a>
+{% endif %}

@@ -28,4 +28,5 @@ urlpatterns = [
     path("add/", tl_views.add, name="events_add"),
     path("about/", tl_views.about, name="about"),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('webpush/', include('webpush.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
