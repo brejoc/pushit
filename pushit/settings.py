@@ -91,7 +91,7 @@ WSGI_APPLICATION = 'pushit.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, env('DB_PATH')),
+        'NAME': env('DB_PATH'),
     }
 }
 
@@ -134,7 +134,8 @@ SESSION_COOKIE_AGE = 2419200
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '/var/www/pushit/static/'
+#STATIC_ROOT = '/var/www/pushit/static/'
+STATIC_ROOT = env('STATIC_ROOT')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
