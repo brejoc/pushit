@@ -134,7 +134,8 @@ SESSION_COOKIE_AGE = 2419200
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '/var/www/pushit/static/'
+#STATIC_ROOT = '/var/www/pushit/static/'
+STATIC_ROOT = env('STATIC_ROOT')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),

@@ -1,0 +1,28 @@
+version: '3'
+services:
+  django:
+    build: .
+    volumes:
+      - ./tmp/db:/var/www/pushit/db
+      - ./tmp/static:/var/www/pushit/static-collection
+      - ./tmp/logs:/var/www/pushit/logs
+      - ./tmp/run:/var/www/pushit/run
+      - ./tmp/backup:/var/www/pushit/backup
+    environment:
+      SECRET_KEY: "<insert-secret-key>"
+      DEBUG: "False"
+      ALLOWED_HOSTS: "pushit.brejoc.com"
+      DB_PATH: "/var/www/pushit/db/production.sqlite3"
+      STATIC_ROOT: "/var/www/pushit/static-collect"
+      VAPID_PUBLIC_KEY: "<insert-vapid-public-key>"
+      VAPID_PRIVATE_KEY: "<insert-vapid-private-key>"
+      VAPID_ADMIN_EMAIL: "<insert-admin-email>"
+  nginx:
+    build: ./nginx
+    volumes:
+      - ./tmp/static:/var/www/pushit/static-collection
+      - ./tmp/logs:/var/www/pushit/logs
+      - ./tmp/run:/var/www/pushit/run
+    ports:
+      - 127.0.0.1:9006:81
+    restart: on-failure
