@@ -91,7 +91,7 @@ WSGI_APPLICATION = 'pushit.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, env('DB_PATH')),
+        'NAME': env('DB_PATH'),
     }
 }
 
