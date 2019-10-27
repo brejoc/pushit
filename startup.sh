@@ -2,7 +2,7 @@
 
 # Preparing directories for everything that is not static.
 mkdir -p /var/www/pushit/db
-mkdir -p /var/www/pushit/static
+mkdir -p /var/www/pushit/static-collection
 mkdir -p /var/www/pushit/logs
 mkdir -p /var/www/pushit/run
 mkdir -p /var/www/pushit/backup
