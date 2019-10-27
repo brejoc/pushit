@@ -1,6 +1,7 @@
 version: '3'
 services:
   django:
+    image: brejoc/pushit
     build: .
     volumes:
       - ./tmp/db:/var/www/pushit/db
@@ -18,6 +19,7 @@ services:
       VAPID_PRIVATE_KEY: "<insert-vapid-private-key>"
       VAPID_ADMIN_EMAIL: "<insert-admin-email>"
   nginx:
+    image: brejoc/pushit-nginx
     build: ./nginx
     volumes:
       - ./tmp/static:/var/www/pushit/static-collection
