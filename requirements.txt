@@ -1,4 +1,4 @@
-Django == 2.2.6
+Django == 2.2.8
 django-bulma
 django-environ
 django-webpush==0.3.1
